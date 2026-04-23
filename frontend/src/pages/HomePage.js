@@ -14,7 +14,7 @@ function HomePage() {
 
       <div style={styles.content}>
         {/* Badge */}
-        <div style={styles.badge}>⚡ SRM Institute · Full Stack Development</div>
+        <div style={styles.badge}>SRM Institute of Science and Technology - AL2 - Full Stack Development</div>
 
         {/* Title */}
         <h1 style={styles.title}>TEAM BLUE</h1>
@@ -29,7 +29,7 @@ function HomePage() {
 
         {/* Card */}
         <div style={styles.card}>
-          <p style={styles.cardLabel}>🚀 Manage Team</p>
+          <p style={styles.cardLabel}>Manage Team</p>
           <div style={styles.buttons}>
             <Link to="/add" style={styles.btnPrimary}>
               ➕ Add Member
