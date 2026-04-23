@@ -80,19 +80,19 @@
 
 team-app/
 ├── backend/
-│   ├── server.js           # Express server, routes, MongoDB connection
-│   ├── uploads/            # Uploaded profile images (auto-created)
+│   ├── server.js          
+│   ├── uploads/            
 │   ├── package.json
 │   └── .gitignore
 ├── frontend/
 │   ├── public/
 │   │   └── index.html
 │   ├── src/
-│   │   ├── App.js          # React Router setup
-│   │   ├── App.css         # Global styles & animations
-│   │   ├── index.js        # React entry point
+│   │   ├── App.js          
+│   │   ├── App.css        
+│   │   ├── index.js        
 │   │   ├── components/
-│   │   │   └── Navbar.js   # Navigation bar
+│   │   │   └── Navbar.js   
 │   │   └── pages/
 │   │       ├── HomePage.js
 │   │       ├── AddMemberPage.js
@@ -100,7 +100,7 @@ team-app/
 │   │       └── MemberDetailsPage.js
 │   ├── package.json
 │   └── .gitignore
-├── screenshots/            # Add your screenshots here
+├── screenshots/            
 └── README.md
 
 ---
