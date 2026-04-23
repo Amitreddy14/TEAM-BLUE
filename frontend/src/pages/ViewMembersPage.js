@@ -33,10 +33,8 @@ function ViewMembersPage() {
   return (
     <div style={styles.container}>
       <div style={styles.grid}></div>
-
       <div style={styles.inner}>
-        {/* Header */}
-        <div style={styles.header}>
+        <div style={{...styles.header, animation: 'fadeInUp 0.5s ease forwards'}}>
           <div style={styles.badge}>👥 Our Team</div>
           <h2 style={styles.title}>Meet The Team</h2>
           <div style={styles.underline}></div>
@@ -51,9 +49,17 @@ function ViewMembersPage() {
           </div>
         ) : (
           <div style={styles.cardGrid}>
-            {members.map(member => (
-              <div key={member._id} style={styles.card}>
-                {/* Glow on hover handled via inline */}
+            {members.map((member, index) => (
+              <div
+                key={member._id}
+                className="card-hover"
+                style={{
+                  ...styles.card,
+                  animation: 'fadeInUp 0.5s ease forwards',
+                  animationDelay: `${index * 0.1}s`,
+                  opacity: 0,
+                }}
+              >
                 <div style={styles.imgWrapper}>
                   {member.image
                     ? <img src={`http://localhost:5000/uploads/${member.image}`} alt={member.name} style={styles.img} />
@@ -64,28 +70,18 @@ function ViewMembersPage() {
 
                 <div style={styles.cardBody}>
                   <h3 style={styles.name}>{member.name}</h3>
-
                   <div style={styles.tagRow}>
                     <span style={styles.tag}>{member.degree}</span>
                     <span style={styles.tag}>{member.year}</span>
                   </div>
-
                   <p style={styles.roll}>🎓 {member.roll}</p>
-
-                  {member.internship && (
-                    <p style={styles.detail}>💼 {member.internship}</p>
-                  )}
-                  {member.certificate && (
-                    <p style={styles.detail}>🏅 {member.certificate}</p>
-                  )}
-
+                  {member.internship && <p style={styles.detail}>💼 {member.internship}</p>}
+                  {member.certificate && <p style={styles.detail}>🏅 {member.certificate}</p>}
                   <div style={styles.actions}>
-                    <Link to={`/members/${member._id}`} style={styles.viewBtn}>
+                    <Link to={`/members/${member._id}`} className="btn-hover" style={styles.viewBtn}>
                       View Details →
                     </Link>
-                    <button onClick={() => handleDelete(member._id)} style={styles.deleteBtn}>
-                      🗑️
-                    </button>
+                    <button onClick={() => handleDelete(member._id)} style={styles.deleteBtn}>🗑️</button>
                   </div>
                 </div>
               </div>
@@ -100,31 +96,31 @@ function ViewMembersPage() {
 const styles = {
   container: { background: '#070714', minHeight: '92vh', padding: '2rem', position: 'relative', overflow: 'hidden' },
   center: { background: '#070714', minHeight: '92vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' },
-  grid: { position: 'absolute', inset: 0, backgroundImage: `linear-gradient(rgba(102,126,234,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(102,126,234,0.04) 1px, transparent 1px)`, backgroundSize: '50px 50px', pointerEvents: 'none' },
+  grid: { position: 'absolute', inset: 0, backgroundImage: `linear-gradient(rgba(0,255,150,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0,255,150,0.04) 1px, transparent 1px)`, backgroundSize: '50px 50px', pointerEvents: 'none' },
   inner: { position: 'relative', maxWidth: '1100px', margin: '0 auto' },
   header: { textAlign: 'center', marginBottom: '3rem' },
-  badge: { display: 'inline-block', background: 'rgba(102,126,234,0.1)', border: '1px solid rgba(102,126,234,0.3)', color: '#667eea', padding: '0.4rem 1.2rem', borderRadius: '20px', fontSize: '0.78rem', letterSpacing: '1px', marginBottom: '1rem' },
+  badge: { display: 'inline-block', background: 'rgba(0,255,150,0.08)', border: '1px solid rgba(0,255,150,0.25)', color: '#00ff96', padding: '0.4rem 1.2rem', borderRadius: '20px', fontSize: '0.78rem', letterSpacing: '1px', marginBottom: '1rem' },
   title: { fontFamily: "'Orbitron', sans-serif", fontSize: '2rem', fontWeight: '700', color: '#fff', letterSpacing: '4px', marginBottom: '0.8rem' },
-  underline: { width: '60px', height: '3px', background: 'linear-gradient(90deg, #667eea, #f093fb)', margin: '0 auto 1rem' },
+  underline: { width: '60px', height: '3px', background: 'linear-gradient(90deg, #00ff96, #00e5ff)', margin: '0 auto 1rem' },
   count: { color: '#444', fontSize: '0.85rem', letterSpacing: '1px' },
   cardGrid: { display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '1.5rem' },
-  card: { background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(102,126,234,0.15)', borderRadius: '20px', overflow: 'hidden', transition: 'transform 0.3s, border-color 0.3s' },
+  card: { background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(0,255,150,0.12)', borderRadius: '20px', overflow: 'hidden' },
   imgWrapper: { position: 'relative', height: '220px', overflow: 'hidden', background: '#0f0f1a' },
   img: { width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 20%', display: 'block' },
-  placeholder: { width: '100%', height: '100%', background: 'linear-gradient(135deg, #1a1a3e, #2d2d5e)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '4rem' },
+  placeholder: { width: '100%', height: '100%', background: 'linear-gradient(135deg, #0a1a0f, #0a2a1a)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '4rem' },
   imgOverlay: { position: 'absolute', bottom: 0, left: 0, right: 0, height: '60px', background: 'linear-gradient(transparent, #070714)' },
   cardBody: { padding: '1.2rem' },
   name: { color: '#fff', fontSize: '1.1rem', fontWeight: '700', marginBottom: '0.6rem' },
   tagRow: { display: 'flex', gap: '0.5rem', marginBottom: '0.6rem', flexWrap: 'wrap' },
-  tag: { background: 'rgba(102,126,234,0.1)', border: '1px solid rgba(102,126,234,0.25)', color: '#667eea', padding: '0.15rem 0.6rem', borderRadius: '20px', fontSize: '0.75rem' },
+  tag: { background: 'rgba(0,255,150,0.08)', border: '1px solid rgba(0,255,150,0.2)', color: '#00ff96', padding: '0.15rem 0.6rem', borderRadius: '20px', fontSize: '0.75rem' },
   roll: { color: '#555', fontSize: '0.8rem', marginBottom: '0.4rem' },
   detail: { color: '#555', fontSize: '0.8rem', marginBottom: '0.3rem' },
   actions: { display: 'flex', gap: '0.5rem', marginTop: '1rem', alignItems: 'center' },
-  viewBtn: { flex: 1, textAlign: 'center', background: 'linear-gradient(135deg, #667eea, #764ba2)', color: '#fff', padding: '0.6rem', borderRadius: '8px', textDecoration: 'none', fontWeight: '600', fontSize: '0.85rem' },
-  deleteBtn: { background: 'rgba(245,87,108,0.1)', border: '1px solid rgba(245,87,108,0.3)', color: '#f5576c', padding: '0.6rem 0.8rem', borderRadius: '8px', cursor: 'pointer', fontSize: '0.9rem' },
+  viewBtn: { flex: 1, textAlign: 'center', background: 'linear-gradient(135deg, #00ff96, #00b894)', color: '#000', padding: '0.6rem', borderRadius: '8px', textDecoration: 'none', fontWeight: '700', fontSize: '0.85rem' },
+  deleteBtn: { background: 'rgba(245,87,108,0.08)', border: '1px solid rgba(245,87,108,0.3)', color: '#f5576c', padding: '0.6rem 0.8rem', borderRadius: '8px', cursor: 'pointer', fontSize: '0.9rem' },
   empty: { textAlign: 'center', padding: '4rem' },
-  addBtn: { background: 'linear-gradient(135deg, #667eea, #764ba2)', color: '#fff', padding: '0.75rem 2rem', borderRadius: '10px', textDecoration: 'none', fontWeight: '600' },
-  spinner: { width: '40px', height: '40px', border: '3px solid rgba(102,126,234,0.2)', borderTop: '3px solid #667eea', borderRadius: '50%', animation: 'spin 0.8s linear infinite' },
+  addBtn: { background: 'linear-gradient(135deg, #00ff96, #00b894)', color: '#000', padding: '0.75rem 2rem', borderRadius: '10px', textDecoration: 'none', fontWeight: '700' },
+  spinner: { width: '40px', height: '40px', border: '3px solid rgba(0,255,150,0.15)', borderTop: '3px solid #00ff96', borderRadius: '50%', animation: 'spin 0.8s linear infinite' },
 };
 
 export default ViewMembersPage;

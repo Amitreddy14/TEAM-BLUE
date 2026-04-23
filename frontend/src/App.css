@@ -15,14 +15,14 @@ body {
 
 /* ---- NAVBAR ---- */
 .navbar {
-  background: rgba(10, 10, 30, 0.95);
+  background: rgba(7, 15, 10, 0.95);
   backdrop-filter: blur(12px);
   padding: 0 2.5rem;
   height: 68px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid rgba(102, 126, 234, 0.2);
+  border-bottom: 1px solid rgba(0,255,150,0.15);
   position: sticky;
   top: 0;
   z-index: 100;
@@ -35,7 +35,7 @@ body {
   color: #fff;
   text-decoration: none;
   letter-spacing: 3px;
-  background: linear-gradient(135deg, #667eea, #f093fb);
+  background: linear-gradient(135deg, #00ff96, #00e5ff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -48,7 +48,7 @@ body {
 }
 
 .navbar-links a {
-  color: #666;
+  color: #555;
   text-decoration: none;
   padding: 0.5rem 1.2rem;
   border-radius: 8px;
@@ -61,12 +61,60 @@ body {
 
 .navbar-links a:hover {
   color: #fff;
-  border-color: rgba(102, 126, 234, 0.3);
-  background: rgba(102, 126, 234, 0.08);
+  border-color: rgba(0,255,150,0.3);
+  background: rgba(0,255,150,0.06);
 }
 
 .navbar-links a.active {
-  color: #667eea;
-  border-color: rgba(102, 126, 234, 0.4);
-  background: rgba(102, 126, 234, 0.1);
+  color: #00ff96;
+  border-color: rgba(0,255,150,0.4);
+  background: rgba(0,255,150,0.08);
+}
+
+/* ---- ANIMATIONS ---- */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+/* ---- HOVER EFFECTS ---- */
+.card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease !important;
+}
+
+.card-hover:hover {
+  transform: translateY(-8px) !important;
+  box-shadow: 0 20px 40px rgba(0,255,150,0.15) !important;
+  border-color: rgba(0,255,150,0.4) !important;
+}
+
+.btn-hover {
+  transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+.btn-hover:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 25px rgba(0,255,150,0.4) !important;
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.fade-in {
+  animation: fadeIn 0.4s ease forwards;
 }

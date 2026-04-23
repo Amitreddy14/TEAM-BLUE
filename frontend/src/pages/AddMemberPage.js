@@ -62,11 +62,8 @@ function AddMemberPage() {
 
   return (
     <div style={styles.container}>
-      {/* Background grid */}
       <div style={styles.grid}></div>
-
-      <div style={styles.inner}>
-        {/* Header */}
+      <div style={{...styles.inner, animation: 'fadeInUp 0.6s ease forwards'}}>
         <div style={styles.header}>
           <div style={styles.badge}>➕ New Member</div>
           <h2 style={styles.title}>Add Team Member</h2>
@@ -78,8 +75,6 @@ function AddMemberPage() {
 
         <div style={styles.card}>
           <form onSubmit={handleSubmit}>
-
-            {/* Photo preview + upload */}
             <div style={styles.photoSection}>
               <div style={styles.photoPreview}>
                 {preview
@@ -94,13 +89,12 @@ function AddMemberPage() {
                   Choose File
                   <input type="file" accept="image/*" onChange={handleImage} style={{display:'none'}} />
                 </label>
-                {image && <p style={styles.photoHint}>✅ {image.name}</p>}
+                {image && <p style={{...styles.photoHint, color:'#00ff96', marginTop:'0.4rem'}}>✅ {image.name}</p>}
               </div>
             </div>
 
             <div style={styles.divider}></div>
 
-            {/* Row 1 */}
             <div style={styles.row}>
               <Field label="Full Name *" error={errors.name}>
                 <input style={styles.input} name="name" value={form.name} onChange={handleChange} placeholder="e.g. Amit Reddy" />
@@ -110,7 +104,6 @@ function AddMemberPage() {
               </Field>
             </div>
 
-            {/* Row 2 */}
             <div style={styles.row}>
               <Field label="Year *" error={errors.year}>
                 <input style={styles.input} name="year" value={form.year} onChange={handleChange} placeholder="e.g. 2024" />
@@ -141,10 +134,9 @@ function AddMemberPage() {
               <textarea style={{...styles.input, minHeight:'80px', resize:'vertical'}} name="aboutAim" value={form.aboutAim} onChange={handleChange} placeholder="What is your career aim?" />
             </Field>
 
-            <button type="submit" style={styles.btn} disabled={loading}>
-              {loading ? '⏳ Submitting...' : 'Submit Member'}
+            <button type="submit" className="btn-hover" style={styles.btn} disabled={loading}>
+              {loading ? '⏳ Submitting...' : '🚀 Submit Member'}
             </button>
-
           </form>
         </div>
 
@@ -156,7 +148,6 @@ function AddMemberPage() {
   );
 }
 
-// Small helper component for form fields
 function Field({ label, error, children }) {
   return (
     <div style={{ flex: 1, marginBottom: '1.2rem' }}>
@@ -168,31 +159,31 @@ function Field({ label, error, children }) {
 }
 
 const fieldStyles = {
-  label: { display: 'block', color: '#667eea', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '0.4rem', fontWeight: '600' },
+  label: { display: 'block', color: '#00ff96', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '0.4rem', fontWeight: '600' },
   error: { color: '#f5576c', fontSize: '0.78rem', marginTop: '0.3rem' },
 };
 
 const styles = {
   container: { background: '#070714', minHeight: '92vh', padding: '2rem', display: 'flex', justifyContent: 'center', position: 'relative', overflow: 'hidden' },
-  grid: { position: 'absolute', inset: 0, backgroundImage: `linear-gradient(rgba(102,126,234,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(102,126,234,0.04) 1px, transparent 1px)`, backgroundSize: '50px 50px', pointerEvents: 'none' },
+  grid: { position: 'absolute', inset: 0, backgroundImage: `linear-gradient(rgba(0,255,150,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0,255,150,0.04) 1px, transparent 1px)`, backgroundSize: '50px 50px', pointerEvents: 'none' },
   inner: { position: 'relative', width: '100%', maxWidth: '680px' },
   header: { textAlign: 'center', marginBottom: '2rem' },
-  badge: { display: 'inline-block', background: 'rgba(102,126,234,0.1)', border: '1px solid rgba(102,126,234,0.3)', color: '#667eea', padding: '0.4rem 1.2rem', borderRadius: '20px', fontSize: '0.78rem', letterSpacing: '1px', marginBottom: '1rem' },
+  badge: { display: 'inline-block', background: 'rgba(0,255,150,0.08)', border: '1px solid rgba(0,255,150,0.25)', color: '#00ff96', padding: '0.4rem 1.2rem', borderRadius: '20px', fontSize: '0.78rem', letterSpacing: '1px', marginBottom: '1rem' },
   title: { fontFamily: "'Orbitron', sans-serif", fontSize: '1.8rem', fontWeight: '700', color: '#fff', letterSpacing: '3px', marginBottom: '0.8rem' },
-  underline: { width: '60px', height: '3px', background: 'linear-gradient(90deg, #667eea, #f093fb)', margin: '0 auto' },
-  card: { background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(102,126,234,0.15)', borderRadius: '20px', padding: '2rem', backdropFilter: 'blur(10px)' },
+  underline: { width: '60px', height: '3px', background: 'linear-gradient(90deg, #00ff96, #00e5ff)', margin: '0 auto' },
+  card: { background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(0,255,150,0.12)', borderRadius: '20px', padding: '2rem', backdropFilter: 'blur(10px)' },
   row: { display: 'flex', gap: '1rem' },
-  input: { width: '100%', padding: '0.75rem 1rem', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(102,126,234,0.2)', borderRadius: '10px', color: '#e0e0e0', fontSize: '0.92rem', boxSizing: 'border-box', fontFamily: 'inherit', outline: 'none' },
-  btn: { width: '100%', padding: '1rem', background: 'linear-gradient(135deg, #667eea, #764ba2)', color: '#fff', border: 'none', borderRadius: '10px', fontSize: '1rem', fontWeight: '700', cursor: 'pointer', letterSpacing: '1px', marginTop: '0.5rem', fontFamily: 'inherit' },
+  input: { width: '100%', padding: '0.75rem 1rem', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(0,255,150,0.15)', borderRadius: '10px', color: '#e0e0e0', fontSize: '0.92rem', boxSizing: 'border-box', fontFamily: 'inherit', outline: 'none' },
+  btn: { width: '100%', padding: '1rem', background: 'linear-gradient(135deg, #00ff96, #00b894)', color: '#000', border: 'none', borderRadius: '10px', fontSize: '1rem', fontWeight: '700', cursor: 'pointer', letterSpacing: '1px', marginTop: '0.5rem', fontFamily: 'inherit' },
   photoSection: { display: 'flex', alignItems: 'center', gap: '1.5rem', marginBottom: '1.5rem' },
-  photoPreview: { width: '90px', height: '90px', borderRadius: '50%', background: 'rgba(102,126,234,0.1)', border: '2px solid rgba(102,126,234,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', flexShrink: 0 },
+  photoPreview: { width: '90px', height: '90px', borderRadius: '50%', background: 'rgba(0,255,150,0.05)', border: '2px solid rgba(0,255,150,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', flexShrink: 0 },
   previewImg: { width: '100%', height: '100%', objectFit: 'cover' },
   photoPlaceholder: { fontSize: '2rem' },
   photoLabel: { color: '#fff', fontWeight: '600', marginBottom: '0.3rem' },
   photoHint: { color: '#555', fontSize: '0.8rem', marginBottom: '0.6rem' },
-  uploadBtn: { display: 'inline-block', background: 'rgba(102,126,234,0.15)', border: '1px solid rgba(102,126,234,0.3)', color: '#667eea', padding: '0.4rem 1rem', borderRadius: '8px', fontSize: '0.82rem', cursor: 'pointer', fontWeight: '600' },
-  divider: { height: '1px', background: 'rgba(102,126,234,0.1)', margin: '1.2rem 0' },
-  success: { background: 'rgba(102,234,139,0.08)', border: '1px solid rgba(102,234,139,0.3)', color: '#6eea8a', padding: '1rem', borderRadius: '10px', marginBottom: '1rem', textAlign: 'center' },
+  uploadBtn: { display: 'inline-block', background: 'rgba(0,255,150,0.08)', border: '1px solid rgba(0,255,150,0.25)', color: '#00ff96', padding: '0.4rem 1rem', borderRadius: '8px', fontSize: '0.82rem', cursor: 'pointer', fontWeight: '600' },
+  divider: { height: '1px', background: 'rgba(0,255,150,0.08)', margin: '1.2rem 0' },
+  success: { background: 'rgba(0,255,150,0.06)', border: '1px solid rgba(0,255,150,0.3)', color: '#00ff96', padding: '1rem', borderRadius: '10px', marginBottom: '1rem', textAlign: 'center' },
   errorBanner: { background: 'rgba(245,87,108,0.08)', border: '1px solid rgba(245,87,108,0.3)', color: '#f5576c', padding: '1rem', borderRadius: '10px', marginBottom: '1rem', textAlign: 'center' },
   backLink: { color: '#555', textDecoration: 'none', fontSize: '0.88rem' },
 };
