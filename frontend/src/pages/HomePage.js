@@ -9,7 +9,7 @@ function HomePage() {
       <div style={{...styles.orb, bottom: '20%', right: '15%', background: 'rgba(0,229,255,0.06)'}}></div>
 
       <div style={{...styles.content, animation: 'fadeInUp 0.8s ease forwards'}}>
-        <div style={styles.badge}>⚡ SRM Institute · Full Stack Development</div>
+        <div style={styles.badge}>SRM Institute of Science and Technology - AL2 - Full Stack Development</div>
         <h1 style={{...styles.title, animation: 'float 4s ease-in-out infinite'}}>TEAM FOUR</h1>
         <div style={styles.underline}></div>
         <p style={styles.subtitle}>Welcome to the FOUR Team Management System</p>
@@ -18,7 +18,7 @@ function HomePage() {
         </p>
 
         <div style={styles.card}>
-          <p style={styles.cardLabel}>🚀 Manage Team</p>
+          <p style={styles.cardLabel}>Manage Team</p>
           <div style={styles.buttons}>
             <Link to="/add" className="btn-hover" style={styles.btnPrimary}>➕ Add Member</Link>
             <Link to="/view" className="btn-hover" style={styles.btnSecondary}>👥 View Members</Link>
