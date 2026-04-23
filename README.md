@@ -6,7 +6,7 @@
 
 ---
 
-## 🏫 Course Details
+## Course Details
 
 | Field | Details |
 |-------|---------|
@@ -20,9 +20,7 @@
 
 ---
 
-## 📸 Screenshots
-
-> Add your screenshots inside a `screenshots/` folder and update the paths below.
+## Screenshots
 
 | Page | Preview |
 |------|---------|
@@ -34,19 +32,19 @@
 
 ---
 
-## 🚀 Features
+## Features
 
-- 🏠 **Home Page** — Team landing page with navigation
-- ➕ **Add Member** — Form with validation and profile photo upload
-- 👥 **View Members** — Card grid displaying all team members with photos
-- 🔍 **Member Details** — Full profile view with all member information
-- 🗑️ **Delete Member** — Remove a member from the team
-- 📁 **Image Upload** — Profile photos stored in the backend `uploads/` folder
-- 🌐 **REST API** — Testable directly in the browser
+- **Home Page** — Team landing page with navigation
+- **Add Member** — Form with validation and profile photo upload
+- **View Members** — Card grid displaying all team members with photos
+- **Member Details** — Full profile view with all member information
+- **Delete Member** — Remove a member from the team
+- **Image Upload** — Profile photos stored in the backend `uploads/` folder
+- **REST API** — Testable directly in the browser
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 ### Frontend
 | Technology | Purpose |
@@ -77,7 +75,7 @@
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 team-app/
@@ -106,7 +104,7 @@ team-app/
 └── README.md
 ```
 
-## ⚙️ Installation & Setup
+## Installation & Setup
 
 ### Prerequisites
 - Node.js v16+
@@ -147,7 +145,7 @@ Frontend runs at: `http://localhost:3000`
 
 ---
 
-## 🔌 API Endpoints
+## API Endpoints
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|
@@ -164,7 +162,7 @@ http://localhost:5000/api/members
 
 http://localhost:5000/api/members/<member_id>
 
-## 📝 Notes
+## Notes
 
 - The `uploads/` folder is excluded from GitHub via `.gitignore`
 - The `node_modules/` folder is excluded from GitHub via `.gitignore`
