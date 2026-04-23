@@ -135,7 +135,7 @@ function AddMemberPage() {
             </Field>
 
             <button type="submit" className="btn-hover" style={styles.btn} disabled={loading}>
-              {loading ? '⏳ Submitting...' : '🚀 Submit Member'}
+              {loading ? '⏳ Submitting...' : 'Submit Member'}
             </button>
           </form>
         </div>
